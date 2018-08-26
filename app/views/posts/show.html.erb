@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @post.title %></h1>
+<p>by <%= link_to @post.user.name, @post.user %></p>
+<% if @post.photo.present? %>
+  <p><%= image_tag @post.photo.url(:medium) %></p>
+<% end %>
+<p><%= @post.body %></p>
+
+<% if current_user == @post.user%>
+  <%= link_to 'Edit', edit_post_path(@post) %>  |
+  <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+
+<%= link_to 'Back', posts_path %>
