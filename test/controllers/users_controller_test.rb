@@ -17,10 +17,22 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, params: { user: {  } }
+      post users_url, params: { user: { name: 'foo', email: 'foo@example.com', password: 'foo', password_confirmation:'foo'   } }
     end
 
     assert_redirected_to user_url(User.last)
+  end
+
+  test "should not create user without matching password confirmation" do
+    assert_no_difference('User.count') do
+      post users_url, params: { user: { name: 'foo', email: 'foo@example.com', password: 'foo', password_confirmation:'foo_confirmation'   } }
+    end
+  end
+
+  test "should not create user with invalid email format" do
+    assert_no_difference('User.count') do
+      post users_url, params: { user: { name: 'foo', email: 'foo', password: 'foo', password_confirmation:'foo'   } }
+    end
   end
 
   test "should show user" do
@@ -28,21 +40,24 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
+
+
+  test "should redirect edit to site_home" do
     get edit_user_url(@user)
-    assert_response :success
+    assert_redirected_to root_path
   end
 
-  test "should update user" do
+  test "should redirect update to site_home" do
     patch user_url(@user), params: { user: {  } }
-    assert_redirected_to user_url(@user)
+    assert_redirected_to root_path
   end
 
-  test "should destroy user" do
-    assert_difference('User.count', -1) do
+  test "should redirect destroy to site home" do
+    assert_no_difference('User.count') do
       delete user_url(@user)
     end
 
-    assert_redirected_to users_url
+    assert_redirected_to root_path
   end
+
 end

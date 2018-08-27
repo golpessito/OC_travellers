@@ -2,6 +2,7 @@
 
 <h1><%= @post.title %></h1>
 <p>by <%= link_to @post.user.name, @post.user %></p>
+
 <% if @post.photo.present? %>
   <p><%= image_tag @post.photo.url(:medium) %></p>
 <% end %>

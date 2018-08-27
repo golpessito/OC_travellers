@@ -1,9 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  body: MyText
+  user: one
+  title: lorem ipsum
+  body: vi cardenal deluca 1, rome ...
+
 
 two:
-  title: MyString
-  body: MyText
+  user: two
+  title: second post
+  body: dolor sit amet

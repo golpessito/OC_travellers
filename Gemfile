@@ -32,7 +32,12 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Use paperclip to manage photo in differents resolutions (use imagemagick)
 gem 'paperclip'
+
+#Use to location in a map
+gem 'geocoder'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
